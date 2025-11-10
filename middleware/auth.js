@@ -1,4 +1,4 @@
-// middleware/auth.js
+
 import jwt from "jsonwebtoken";
 
 export const verifyToken = (req, res, next) => {
@@ -23,10 +23,10 @@ export const socketAuth = (socket, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET || "secret");
     socket.user = decoded;
-    console.log("✅ Socket authenticated:", decoded);
+    console.log(" Socket authenticated:", decoded);
     next();
   } catch (err) {
-    console.error("❌ JWT error:", err.message);
+    console.error(" JWT error:", err.message);
     next(new Error("Invalid token"));
   }
 };
